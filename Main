@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto final-To Do APP</title>
+    <!-- Enlazar Bulma CSS desde CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<p class="has-background-warning-light"></p>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<style>
+    body {
+        background-color: hsl(171, 100%, 96%);
+    }
+    .custom-title {
+            color: hsl(185, 72%, 48%);
+            margin-right: 20px;
+        }
+</style>
+</head>
+<body>
+  <div class="container">
+    <article class="panel is-primary">
+        <p class="text-center is-size-1 custom-title"
+         class="is-size-1 custom-title">
+            LISTCARDG2
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                  <div class="card">
+                    <img src="{{url_for('static', filename='foto1.jpg')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+            
+                    </div>
+                  </div>
+                </div>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <button class="button is-primary is-fullwidth">Tienes una nueva tarea?</button>
+            
+                  <div class="col-md-4">
+                    <h5 class="card-title custom-title"> LISTCARDG2</h1>
+                        <br>
+                   
+                  <form method="Post"> 
+                        <input class="input is-primary" type="text" placeholder="QUE TAREAS DESEAS AGREGAR" name="name">
+                
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                    
+                  </form>
+                            
+                    </div>
+                  </div>
+                
+                    
+                </div>
+            </div>
+                  </div>
+                </div>
+              </div>
+    
+    
+                <table class="table table-success table-striped">
+            
+                <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">TAREA</th>
+                        <th scope="col">ESTADO</th>
+                        <th scope="col">COMPLETAR</th>
+                        <th scope="col">ELIMINAR</th>
+
+                </tr>
+                               
+                
+
+                {% for todo in lista_tareas %}
+                <tr>
+                        <td>{{todo.id}}</td>
+                        <td>{{todo.name}}</td>
+                        <td>{{todo.state}}</td>
+                        <td> <a href="{{ url_for('update',id=todo.id)}}" >
+                              <label class="checkbox">
+                               <input type="checkbox">
+                              </label>
+                             </a></td>
+                        <td><a href="{{ url_for('delete',id=todo.id)}}" >
+                            <button type="button" class="btn btn-danger">Eliminar</button>
+                            </a></td>
+                </tr>
+                                    
+                
+                {% endfor %}
+                </table>
+                       
+                </div>
+                      
+                 </div>
+             </div>
+            
+
+   
+     
+  </div>
+</body>
+</html>
